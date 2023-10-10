@@ -7,26 +7,20 @@
 @stop
 
 @section('content')
-    <p>Lista de ciudades.</p>
-    <table class=""> 
-        <thead>
-            <tr>
-            <th>ID</th>
-            <th>Ciudad</th>
-            <th> - </th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($ciudades as $c)
-        <tr>
-        <td>{{$c->id}}</td>
-        <td>{{$c->nombre}}</td>
-        <td>Editar</Td>
-        </tr>
-        <tr>
-        @endforeach
-     </tbody>
-    </table> 
+    @if($m != "")
+        {{$m}}
+    @endif
+
+    @foreach ($ciudades as $c)
+        {{$c->id}}
+        {{$c->nombre}}
+        <form method="post" action='eliminarciudad/{{$c->id}}'>
+            @csrf
+            @method('DELETE')
+            <button type="submit">Borrar</Button>
+        </form>
+        <br>
+    @endforeach
 @stop
 
 @section('css')

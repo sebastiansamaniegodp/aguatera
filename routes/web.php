@@ -30,3 +30,4 @@ Route::middleware([
 
 #Ciudad
 Route::get('/ciudad','App\Http\Controllers\CiudadController@index');
+Route::delete('/eliminarciudad/{id}', 'App\Http\Controllers\CiudadController@destroy');

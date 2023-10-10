@@ -10,12 +10,10 @@ class CiudadController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($m = "")
     {
-        //
-
-        $data['ciudades'] = Ciudad :: paginate(5);
-        return view('ciudad.index')->with($data);
+        $datos['ciudades'] = Ciudad :: paginate(5);
+        return view('ciudad.index',compact('m'))->with($datos);
     }
 
     /**
@@ -61,8 +59,10 @@ class CiudadController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ciudad $ciudad)
+    public function destroy($id)
     {
-        //
+        Ciudad::destroy($id);
+        $mensaje = "Se ha borrado la ciudad";
+        return $this->index($mensaje);
     }
 }
