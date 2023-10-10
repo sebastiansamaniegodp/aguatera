@@ -8,7 +8,7 @@
 
 @section('content')
     @if($m != "")
-        {{$m}}
+        <br>{{$m}}<br>
     @endif
 
     @foreach ($ciudades as $c)
